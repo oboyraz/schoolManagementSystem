@@ -8,9 +8,6 @@ public class Student extends Person{
         this.studNo = studNo;
     }
 
-    public Student() {
-    }
-
     public String getClassInfo() {
         return classInfo;
     }
@@ -30,7 +27,11 @@ public class Student extends Person{
     @Override
     public String toString() {
         return "Student{" +
-                "classInfo='" + classInfo + '\'' +
+                " name: " + super.getName() +
+                " ,surname: " + super.getSurName() +
+                " ,Tc No: " + super.getTcNo() +
+                ", Age: " + super.getAge() +
+                " ,classInfo= " + classInfo +
                 ", studNo=" + studNo +
                 '}';
     }

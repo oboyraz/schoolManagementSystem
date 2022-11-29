@@ -6,13 +6,13 @@ public class StudentMenu implements IProcesses{
     List<Student> studentList = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
     void studMenu(){
-        System.out.print("================ ISLEMLER ===============\n" +
-                            "1- EKLEME\n" +
-                            "2- ARAMA\n" +
-                            "3- LISTELEME\n" +
-                            "4- SILME\n" +
-                            "Q- CIKIS\n" +
-                            "SECIMINIZ: ");
+        System.out.print("================ OPERATIONS ===============\n" +
+                            "1- ADDING\n" +
+                            "2- SEARCHING\n" +
+                            "3- LISTING\n" +
+                            "4- DELETION\n" +
+                            "Q- EXIT\n" +
+                            "YOUR CHOICE: ");
 
 
         while (true){
@@ -40,17 +40,19 @@ public class StudentMenu implements IProcesses{
     }
     @Override
     public void add() {
-        System.out.println("Isım giriniz:");
+        System.out.print("Enter Name:");
+        scan.nextLine();
         String name =scan.nextLine();
-        System.out.println("Soyisım giriniz:");
+        System.out.print("Enter Surname:");
         String surName =scan.nextLine();
-        System.out.println("Tc No giriniz:");
+        System.out.print("Enter Tc Number:");
         String tcNo =scan.nextLine();
-        System.out.println("Yas giriniz:");
+        System.out.print("Enter Age:");
         int age =scan.nextInt();
-        System.out.println("Sınıf giriniz:");
+        scan.nextLine();
+        System.out.print("Enter Class:");
         String classInfo =scan.nextLine();
-        System.out.println("Ogrenci No giriniz:");
+        System.out.print("Enter Student Number:");
         int studNo =scan.nextInt();
 
         Student student = new Student(name,surName,tcNo,age,classInfo,studNo);
@@ -61,7 +63,7 @@ public class StudentMenu implements IProcesses{
     @Override
     public void search() {
         if (!studentList.isEmpty()){
-            System.out.print("Arama yapilacak Tc No'yu giriniz: ");
+            System.out.print("Enter the TR Number to be searched: ");
             String searchTc = scan.next();
             for (Student each : studentList) {
                 if (each.getTcNo().equals(searchTc)){
@@ -69,13 +71,12 @@ public class StudentMenu implements IProcesses{
                     studMenu();
                 }
                 else {
-                    System.out.println(searchTc + " Tc no ya ait bilgi bulunamadi.");
+                    System.out.println(searchTc + " The information of the entered Tc number could not be found.");
                     studMenu();
                 }
             }
-
         }else{
-            System.out.print("Ogrenci Listesi Bos");
+            System.out.print("Student List is empty!\n");
             studMenu();
         }
 
@@ -90,26 +91,27 @@ public class StudentMenu implements IProcesses{
             studMenu();
         }
         else{
-            System.out.print("Ogrenci Listesi Bos");
+            System.out.print("Student List is empty!\n");
             studMenu();
         }
-
     }
 
     @Override
     public void deletion() {
         if (!studentList.isEmpty()){
-            System.out.print("Silme yapilacak Tc No'yu giriniz: ");
+            System.out.print("Enter the Tc Number you want to delete from the list: ");
             String searchTc = scan.next();
             for (int i = 0; i <studentList.size() ; i++) {
                 if (searchTc.equals(studentList.get(i).getTcNo())){
                     studentList.remove(i);
+                    System.out.println("The person with" + searchTc + "TC number has been removed from the list.");
+
                     studMenu();
                 }
             }
 
         }else{
-            System.out.print("Ogrenci Listesi Bos");
+            System.out.print("Student List is empty!\n");
             studMenu();
         }
 

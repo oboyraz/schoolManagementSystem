@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    void mainMenu(){
+    static void mainMenu(){
         System.out.println("====================================================\n" +
-                        "OGRENCI VE OGRETMEN YONETIM PANELI\n" +
+                        "STUDENT AND TEACHER ADMINISTRATION PANEL\n" +
                         "=====================================================\n" +
-                        "1- OGRENCI ISLEMLERI\n" +
-                        "2- OGRETMEN ISLEMLERI\n" +
-                        "Q- CIKIS\n" +
-                        "SECIMINIZ: ");
+                        "1- STUDENT OPERATIONS\n" +
+                        "2- TEACHER OPERATIONS\n" +
+                        "Q- QUIT\n" +
+                        "YOUR CHOICE: ");
 
         Scanner scan = new Scanner(System.in);
 
@@ -22,17 +22,23 @@ public class MainMenu {
                     StudentMenu student = new StudentMenu();
                     student.studMenu();
                 }case '2':{
-
+                    TeacherMenu teacher = new TeacherMenu();
+                    teacher.teacMenu();
                 }case 'Q':{
-
+                    System.out.print("You have logged out of the system...");
+                    System.exit(0);
                 }
                 default:{
-                    System.out.println("Gecerli deger giriniz");
+                    System.out.print("Enter a valid value.");
                     mainMenu();
                 }
 
             }
         }
+    }
+
+    public static void main(String[] args) {
+        mainMenu();
     }
 
 }
